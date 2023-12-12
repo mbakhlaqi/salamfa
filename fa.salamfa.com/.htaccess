@@ -3,7 +3,9 @@ Options -Indexes
 RewriteEngine On
 RewriteBase /
 
-# Force HTTPS
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.fa\.salamfa\.com$ [NC]
+RewriteRule ^(.*)$ https://fa.salamfa.com/$1 [L,R=301]

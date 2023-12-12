@@ -7,7 +7,7 @@
 
     <title>Salam Online Farsi School</title>
 
-    <meta name="description" content="d 119 to 135 chars, exactly what user searched, using power words, using emotions">
+    <meta name="description" content="119 to 135 chars, exactly what user searched, using power words, using emotions">
     <meta name="keywords" content="">
 
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
@@ -67,7 +67,8 @@
                     <div class="advantage-container text-center pt-3 round-corners">
                         <div class="pt-3 pb-4 pe-4 ps-4">
                             <img class="fa-svg-advantages-overlay mb-3" style="width: 4em; height: 4em;"
-                                src="img/icon/advantages-icons/graduation-cap-light.svg" alt="Graduation Cap Icon Light">
+                                src="img/icon/advantages-icons/graduation-cap-light.svg"
+                                alt="Graduation Cap Icon Light">
                             <img class="fa-svg-advantages-base mb-3" style="width: 4em; height: 4em;"
                                 src="img/icon/advantages-icons/graduation-cap.svg" alt="Graduation Cap Icon">
                             <h2 class="mb-3 fs-5">Skilled Instructors</h2>
@@ -315,37 +316,36 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
+                    <form class="contact-form">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input disabled type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input required type="text" class="form-control" id="name" placeholder="Your Name">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input disabled type="email" class="form-control" id="email"
+                                    <input required type="email" class="form-control" id="email"
                                         placeholder="Your Email">
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input disabled type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input required type="text" class="form-control" id="subject" placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea disabled class="form-control" placeholder="Leave a message here"
+                                    <textarea required class="form-control" placeholder="Leave a message here"
                                         id="message" style="height: 200px"></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button disabled class="btn btn-primary w-100 py-3" type="submit">Coming
-                                    Soon!</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Send</button>
                             </div>
                         </div>
                     </form>
@@ -362,7 +362,8 @@
             <img class="me-2" style="max-width: 60px;max-height: 60px;" src="img/logo/salam-logo-filled.svg"
                 alt="Salam Online Farsi School Logo">
             <div class="align-middle mt-2">
-                <p class="fs-6 text-white">&copy; <a class="text-decoration-underline text-white" href="https://en.salamfa.com">
+                <p class="fs-6 text-white">&copy; <a class="text-decoration-underline text-white"
+                        href="https://en.salamfa.com">
                         Salam Online Farsi School</a>, All Right Reserved.</p>
             </div>
         </div>
@@ -371,6 +372,40 @@
     <script src="lib/wow/wow.min.js"></script>
     <script>
         new WOW().init()
+
+        const contactForm = document.querySelector('.contact-form')
+        let name = document.getElementById('name')
+        let email = document.getElementById('email')
+        let subject = document.getElementById('subject')
+        let message = document.getElementById('message')
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            let formData = {
+                name: name.value,
+                email: email.value,
+                subject: subject.value,
+                message: message.value,
+            }
+
+            let xhr = new XMLHttpRequest()
+            xhr.open('POST', 'https://salamfa.com/cfs')
+            xhr.setRequestHeader('content-type', 'application/json')
+            xhr.onload = function () {
+                console.log(xhr.responseText)
+                if (xhr.responseText == 'success') {
+                    alert('Email Sent Successfuly')
+
+                    name.value = ''
+                    email.value = ''
+                    subject.value = ''
+                    message.value = ''
+                }else{
+                    alert('Something Went Wrong!')
+                }
+            }
+            xhr.send(JSON.stringify(formData))
+        })
     </script>
 </body>
 

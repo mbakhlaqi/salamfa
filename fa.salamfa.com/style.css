@@ -21,6 +21,7 @@
 
 .btn-primary {
     color: #FFFFFF;
+    transition: .2s;
 }
 
 .navbar-brand {
@@ -119,6 +120,10 @@
 
 .course-container p {
     font-size: 20px;
+}
+
+.form-control{
+    transition: .3s;
 }
 
 @font-face {
