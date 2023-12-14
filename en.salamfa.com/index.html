@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="lib/animate/animate.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lib/style.css">
 
     <link rel="canonical" href="https://en.salamfa.com">
     <link rel="alternate" hreflang="en-US" href="https://en.salamfa.com">
@@ -316,36 +316,39 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form class="contact-form">
+                    <form id="contact-form">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input required type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input required type="text" class="form-control" id="name" placeholder="Your Name"
+                                        value="Testy">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input required type="email" class="form-control" id="email"
-                                        placeholder="Your Email">
+                                        value="anything@something.com" placeholder="Your Email">
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input required type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input required type="text" class="form-control" id="subject" placeholder="Subject"
+                                        value="Test Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
                                     <textarea required class="form-control" placeholder="Leave a message here"
-                                        id="message" style="height: 200px"></textarea>
+                                        id="message" style="height: 200px">my test message</textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send</button>
+                                <button id="submit-button" class="btn btn-primary w-100 py-3"
+                                    type="submit">Send</button>
                             </div>
                         </div>
                     </form>
@@ -353,6 +356,22 @@
             </div>
         </div>
     </div>
+
+    <dialog class="text-center contact-form-dialog" id="cfd-success">
+        <p class="text-success fs-5 fw-bold">Message Sent Successfully</p>
+        <p class="fs-6">Thanks for reaching out to us, We will get in touch with you as soon as we can.</p>
+        <button class="btn btn-outline-primary" onclick="document.getElementById('cfd-success').close()">OK</button>
+    </dialog>
+    <dialog class="text-center contact-form-dialog" id="cfd-fail">
+        <p class="text-danger fs-5 fw-bold">Something Went Wrong!</p>
+        <p class="fs-6">Sorry there was an error, Please reach out to us through other ways.</p>
+        <button class="btn btn-outline-primary" onclick="document.getElementById('cfd-fail').close()">OK</button>
+    </dialog>
+    <dialog class="text-center contact-form-dialog" id="cfd-timeout">
+        <p class="text-danger fs-5 fw-bold">Request timed out.</p>
+        <p class="fs-6">Sorry there was an error, Please try again or reach out to us through other ways.</p>
+        <button class="btn btn-outline-primary" onclick="document.getElementById('cfd-timeout').close()">OK</button>
+    </dialog>
 
 
     <div class="container-fluid bg-dark text-light mt-5 w-100" data-wow-delay="0.1s">
@@ -370,43 +389,7 @@
     </div>
 
     <script src="lib/wow/wow.min.js"></script>
-    <script>
-        new WOW().init()
-
-        const contactForm = document.querySelector('.contact-form')
-        let name = document.getElementById('name')
-        let email = document.getElementById('email')
-        let subject = document.getElementById('subject')
-        let message = document.getElementById('message')
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault()
-
-            let formData = {
-                name: name.value,
-                email: email.value,
-                subject: subject.value,
-                message: message.value,
-            }
-
-            let xhr = new XMLHttpRequest()
-            xhr.open('POST', 'https://salamfa.com/cfs')
-            xhr.setRequestHeader('content-type', 'application/json')
-            xhr.onload = function () {
-                console.log(xhr.responseText)
-                if (xhr.responseText == 'success') {
-                    alert('Email Sent Successfuly')
-
-                    name.value = ''
-                    email.value = ''
-                    subject.value = ''
-                    message.value = ''
-                }else{
-                    alert('Something Went Wrong!')
-                }
-            }
-            xhr.send(JSON.stringify(formData))
-        })
-    </script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
