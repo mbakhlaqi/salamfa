@@ -4,6 +4,29 @@
     --light: #e6f8f9;
 }
 
+.contact-form-dialog {
+    display: block;
+    position: fixed;
+    pointer-events: none;
+    width: 300px;
+    border-color: var(--primary);
+    border-radius: 16px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 150ms ease-in, transform 150ms ease-in;
+    transform-origin: center center;
+}
+
+.contact-form-dialog[open] {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: inherit;
+}
+
+.contact-form-dialog::backdrop {
+    background-color: rgba(24, 29, 56, 0.7);
+}
+
 .visually-hidden {
     height: 1px;
     overflow: hidden;
@@ -21,6 +44,11 @@
 
 .btn-primary {
     color: #FFFFFF;
+}
+
+.btn-light,
+.btn-primary,
+.btn-outline-primary {
     transition: .2s;
 }
 
@@ -61,6 +89,10 @@
     .navbar-brand {
         width: 60%;
     }
+
+    .contact-form-dialog {
+        width: 80vw;
+    }
 }
 
 .advantage-container {
@@ -88,7 +120,8 @@
     opacity: 0%;
 }
 
-.fa-svg-advantages-base, .fa-svg-advantages-overlay {
+.fa-svg-advantages-base,
+.fa-svg-advantages-overlay {
     width: 3em;
     height: 3em;
 }
@@ -122,85 +155,13 @@
     font-size: 20px;
 }
 
-.form-control{
+.form-control {
     transition: .3s;
 }
 
 @font-face {
     font-family: 'Vazir';
-    src: url('fonts/vazir/vazir-thin.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Vazir';
-    src: url('fonts/vazir/vazir-light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Vazir';
-    src: url('fonts/vazir/vazir-regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Vazir';
-    src: url('fonts/vazir/vazir-medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Vazir';
-    src: url('fonts/vazir/vazir-bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Vazir';
-    src: url('fonts/vazir/vazir-black.woff2') format('woff2');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Shabnam';
-    src: url('fonts/shabnam/shabnam-thin.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Shabnam';
-    src: url('fonts/shabnam/shabnam-light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Shabnam';
-    src: url('fonts/shabnam/shabnam-regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Shabnam';
-    src: url('fonts/shabnam/shabnam-medium.woff2') format('woff2');
+    src: url('../fonts/vazir/vazir-medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -208,7 +169,15 @@
 
 @font-face {
     font-family: 'Shabnam';
-    src: url('fonts/shabnam/shabnam-bold.woff2') format('woff2');
+    src: url('../fonts/shabnam/shabnam-medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../fonts/shabnam/shabnam-bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
