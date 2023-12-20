@@ -74,7 +74,7 @@ contactForm.addEventListener('submit', async (e) => {
 
     try {
         startTimer()
-        let response = await fetch('https://salamfa.com/cfs', {
+        let response = await fetch('https://salamfa.com/cfs/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
