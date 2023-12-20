@@ -70,7 +70,7 @@ contactForm.addEventListener('submit', async (e) => {
         ContactFormDialogTimeout.showModal()
         submitButton.innerHTML = 'ارسال'
         enableForm()
-    }
+    } 
 
     try {
         startTimer()
