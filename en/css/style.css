@@ -72,7 +72,14 @@
     margin-top: 23rem;
 }
 
-@media (max-width: 768px),
+@media (max-width: 768px) {
+
+    .bg-txt {
+        margin-top: 17rem;
+    }
+}
+
+@media (max-width: 746px),
 (max-height: 650px) {
 
     .bg-container,
@@ -85,13 +92,31 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
     .navbar-brand {
         width: 60%;
     }
 
     .contact-form-dialog {
         width: 80vw;
+    }
+    
+    .bg-txt {
+        margin-top: 10rem;
+    }
+}
+
+@media (max-width: 310px) {
+    .navbar-brand {
+        width: 50%;
+    }
+
+    .contact-form-dialog {
+        width: 80vw;
+    }
+    
+    .bg-txt {
+        margin-top: 8rem;
     }
 }
 
